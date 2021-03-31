@@ -1,0 +1,36 @@
+footer {
+    margin: 0;
+    height: 110px;
+    background-color: #212529;
+    color: white;
+    padding: 0 60px 0 60px;
+    font-size: 20px;
+}
+
+.friends {
+    display: flex;
+    align-items: center;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    text-decoration: none;
+}
+
+li > a {
+    text-decoration: none;
+    color: white;
+    padding: 0 5px 0 5px;
+    font-size: 18px;
+}
+
+a:hover {
+    color: #D5C3FC
+}
+
+.law {
+    text-align: center;
+    padding-bottom: 2px;
+    margin: 0;
+}
