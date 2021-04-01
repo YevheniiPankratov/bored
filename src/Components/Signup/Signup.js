@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react'
 import './Signup.css'
 import {useAuth} from '../../contexts/AuthContext'
+import { Link } from 'react-router-dom'
 
 
 export default function Signup() {
@@ -58,7 +59,7 @@ export default function Signup() {
                         <button disabled={loading} type='submit'>Зареєструватися</button>
                     </form>
                 </div>
-                <div className='have'> Вже є аккаунт? <span>Вхід</span> </div>
+                <div className='have'> Вже є аккаунт? <Link className='lk' to='/login'>Увійти</Link> </div>
             </div>
             
         </div>

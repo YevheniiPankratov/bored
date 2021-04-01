@@ -39,6 +39,7 @@ button:focus {
     background-color: #212529;
     border: 1px solid white;
     color: white;
+    padding-top: 7px;
 }
 
 #login:hover {
@@ -50,12 +51,28 @@ button:focus {
 #signup {
     color: #000;
     background-color: #FFC107;
+    padding-top: 7px;
 }
 
 #signup:hover {
     background-color: #ffcd39
 }
 
-/* #signup:focus, #login:focus {
-    
-} */
+.c {
+    display: inline-block;
+    height: 40px;
+    width: 150px;
+    font-weight: 400;
+    font-size: 30px;
+    margin-right: 15px;
+    cursor: pointer;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: normal;
+    border: none;
+    padding: 0;
+    letter-spacing: 2px;
+    border-radius: 7px;
+    padding-top: 5px;
+    text-align: center;
+    text-decoration: none; /* Убираем подчёркивание */
+  }
