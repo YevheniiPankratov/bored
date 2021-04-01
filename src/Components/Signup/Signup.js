@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react'
 import './Signup.css'
 import {useAuth} from '../../contexts/AuthContext'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 
 export default function Signup() {
@@ -13,6 +13,7 @@ export default function Signup() {
     const {signup} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+    const history = useHistory()
 
 
     async function handleSubmit(e) {
@@ -25,12 +26,11 @@ export default function Signup() {
                 setError('')
                 setLoading(true)
                 signup(emailRef.current.value, passwordRef.current.value)
+                history.push('/home')
             } catch (e) {
                 setError('Не вдалося створити обліковий запис!')
             }
             setLoading(false)
-
-        
     }
 
     return (
@@ -55,7 +55,7 @@ export default function Signup() {
                                 <label> Підтвердження паролю </label>
                                 <input type='password' ref={passwordConfirmRef} required/>
                         </div>
-                        {error && <div style={{textAlign: 'center', color: 'red', fontSize: '12px'}}>{error}</div>}
+                        {error && <div className='err'>{error}</div>}
                         <button disabled={loading} type='submit'>Зареєструватися</button>
                     </form>
                 </div>

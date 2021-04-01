@@ -13,7 +13,7 @@
 }
 
 .title {
-    margin: 5px;
+    margin: 10px;
     text-align: center;
     
 }
@@ -31,11 +31,17 @@ label {
 }
 
 button {
-    margin: 20px;
+    margin: 20px 35px 20px 35px;
     width: 200px;
     color: #000;
     background-color: #FFC107;
 
+}
+
+.err {
+    text-align: center;
+    color: red;
+    font-size: 22px;
 }
 
 button:focus {
@@ -59,19 +65,20 @@ input:focus {
 }
 
 .have > span {
-    color: #FFC107;
+    color: #4c00ff;
     cursor: pointer;
     font-weight: 500;
 }
 
 .lk {
-    padding-top: 7px;
+    padding: 3px 0 15px 0;
     display: inline-block;
     text-align: center;
     text-decoration: none;
-    color: red;
+    color: #4c00ff;
+    font-weight: 500;
   }
   
   .lk:hover {
-    color: red;
+    color: #FFC107;
   }

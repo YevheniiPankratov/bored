@@ -3,12 +3,13 @@ import {useAuth} from '../../contexts/AuthContext';
 import {Link, useHistory} from 'react-router-dom';
 
 
-export default function Login() {
+export default function ForgotPass() {
     
+    // const nameRef = useRef()
     const emailRef = useRef()
-    const passwordRef = useRef()
-    const {login} = useAuth()
+    const {resetPassword} = useAuth()
     const [error, setError] = useState('')
+    const [message, setMessage] = useState("")
     const [loading, setLoading] = useState(false)
     const history = useHistory()
 
@@ -18,11 +19,12 @@ export default function Login() {
 
             try {
                 setError('')
+                setMessage("")
                 setLoading(true)
-                login(emailRef.current.value, passwordRef.current.value)
-                history.push('/home/')
+                await resetPassword(emailRef.current.value)
+                setMessage("Перевірте свою поштову скриньку")
             } catch (e) {
-                setError('Не вдалося увійти до системи!')
+                setError('Не вдалося скинути пароль!')
             }
             setLoading(false)
 
@@ -34,19 +36,18 @@ export default function Login() {
         <div className='sign'>
         <div className='card'>
             <div className='card-body'>
-                <h2 className='title'>Вхід</h2>
+                <h2 className='title'>Cкинути пароль</h2>
                 <form onSubmit={handleSubmit}>
+                {message && <div className='.err'>{message}</div>}
+                 
                     <div className='sec' id='email'>
                             <label> Email </label>
                             <input type='email' ref={emailRef} required/>
                     </div>
-                    <div className='sec' id='password'>
-                            <label> Пароль </label>
-                            <input type='password' ref={passwordRef} required/>
-                    </div>
+                    
                     {error && <div className='err'>{error}</div>}
-                    <button disabled={loading} type='submit'>Увійти</button>
-                    <div className='have'><Link to='/forgot-pass' className='lk'>Забули пароль?</Link></div>
+                    <button disabled={loading} id='btn' type='submit'>СКИНУТИ</button>
+                    <div className='have'><Link to='/login' className='lk'>Вхід</Link></div>
                 </form>
             </div>
             <div className='have'> Немає аккаунту?</div> 
@@ -60,3 +61,4 @@ export default function Login() {
         
     )
 }
+
