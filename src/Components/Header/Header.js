@@ -5,7 +5,7 @@ export default function Header() {
     return (
         <header>
              <navbar>
-                <h3>name</h3>
+                <h3>Назва</h3>
                 <div className='links'>
                 {1 > 0
                 ? <ul>
