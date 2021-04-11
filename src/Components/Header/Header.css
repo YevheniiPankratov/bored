@@ -76,3 +76,8 @@ button:focus {
     text-align: center;
     text-decoration: none; /* Убираем подчёркивание */
   }
+
+  a {
+      color: #fff;
+        margin-top: 5px;
+  }

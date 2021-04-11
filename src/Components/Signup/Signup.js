@@ -6,7 +6,6 @@ import { Link, useHistory } from 'react-router-dom'
 
 export default function Signup() {
     
-    // const nameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
@@ -22,11 +21,14 @@ export default function Signup() {
         if(passwordRef.current.value !== passwordConfirmRef.current.value) {
             return setError('Паролі не збігаються!')
         }
+        if(passwordRef.current.value.length && passwordConfirmRef.current.value.length < 5) {
+            return setError(<p style={{fontSize: '14px'}}>Пароль повинен бути більше 6 символів</p> )
+        }
             try {
                 setError('')
                 setLoading(true)
                 signup(emailRef.current.value, passwordRef.current.value)
-                history.push('/home')
+                history.push('/login')
             } catch (e) {
                 setError('Не вдалося створити обліковий запис!')
             }

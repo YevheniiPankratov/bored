@@ -20,13 +20,11 @@ export default function Login() {
                 setError('')
                 setLoading(true)
                 login(emailRef.current.value, passwordRef.current.value)
-                history.push('/home/')
+                history.push('/')
             } catch (e) {
                 setError('Не вдалося увійти до системи!')
             }
             setLoading(false)
-
-        
     }
 
     return (

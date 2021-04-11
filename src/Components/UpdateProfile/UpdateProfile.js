@@ -65,7 +65,7 @@ export default function UpdateProfile() {
                         <button disabled={loading} type='submit'>Обновити</button>
                     </form>
                 </div>
-                <div className='have'><Link className='lk' to='/home'>Скасувати</Link> </div>
+                <div className='have'><Link className='lk' to='/'>Скасувати</Link> </div>
             </div>
             
         </div>
