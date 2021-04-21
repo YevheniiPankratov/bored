@@ -3,7 +3,7 @@ import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
 import Signup from './Components/Signup/Signup';
 import Login from './Components/Login/Login';
-import { Route, BrowserRouter as Router,Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router,Switch, Redirect } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import PreView from './Components/PreView/PreView'
 import PrivateRoute from './Components/auth/PrivateRoute';
@@ -18,7 +18,7 @@ export default function App() {
         <Router>
             <AuthProvider>
             <Header/>
-            <div className='home'>
+            <div className='home'>     
                 <Switch>
                     <Route exact path='/' component={PreView}/>
                     <Route path='/signup' component={Signup}/>
@@ -27,10 +27,10 @@ export default function App() {
                     <PrivateRoute path='/result-test' component={ResultTest}/>
                     <PrivateRoute path='/recomend-test' component={RecomendTest}/>
                     <PrivateRoute path='/update-profile' component={UpdateProfile}/>
+                    <Redirect to="/"/>
                 </Switch>
                 </div>
-            </AuthProvider>
-            
+            </AuthProvider> 
             </Router>
             <Footer/>
             </div>

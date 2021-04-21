@@ -37,7 +37,7 @@ export default function Signup() {
 
     return (
         <div className='sign'>
-            <div className='card'>
+            <div className='card1'>
                 <div className='card-body'>
                     <h2 className='title'>Реєстрація</h2>
                     <form onSubmit={handleSubmit}>

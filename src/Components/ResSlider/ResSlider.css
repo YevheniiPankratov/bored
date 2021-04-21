@@ -55,7 +55,6 @@ button:hover {
 
 .slide {
   height: 75vh;
-  
   background-size: cover !important;
 }
 
@@ -96,7 +95,6 @@ button:hover {
 .previousButton:hover, .nextButton:hover {
   /* background: url('./arr.svg') no-repeat center center / 25px; */
   background-color:azure;
-    
 }
 
 .previousButton {
@@ -107,6 +105,7 @@ button:hover {
 
 .nextButton {
   right: 10px;
+  
 }
 
 .slider-content {
@@ -146,26 +145,6 @@ button:hover {
   margin: 20px auto 30px;
   max-width: 650px;
   font-weight: 600;
-}
-
-.slider-content section {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-}
-
-.slider-content section img {
-  width: 40px;
-  height: 40px;
-  border: solid 2px rgba(255, 255, 255, 0.5);
-  border-radius: 100%;
-  vertical-align: middle;
-}
-
-.slider-content section span strong {
-  color: #FFFFFF;
-  font-size: 14px;
-  display: block;
 }
 
 @media (max-height: 500px) {
@@ -245,23 +224,6 @@ button:hover {
 					transition-delay: 1.3s;
 }
 
-.slide.animateIn.previous section img,
-.slide.animateIn.next section img {
-	-webkit-transition-delay: 1.3s;
-					transition-delay: 1.3s;
-}
-
-.slide.animateIn.previous section span,
-.slide.animateIn.next section span {
-	-webkit-transition-delay: 1.4s;
-					transition-delay: 1.4s;
-}
-
-.slide.animateIn.previous section span strong,
-.slide.animateIn.next section span strong {
-	-webkit-transition-delay: 1.5s;
-					transition-delay: 1.5s;
-}
 
 .slide.animateOut h1 {
 	-webkit-transition-delay: .3s;
