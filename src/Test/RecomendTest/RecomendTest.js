@@ -1,9 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import './RecomendTest.css'
-import {data} from '../../data/data';
+import {content, data} from '../../data/data';
 import { useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+// Import Swiper styles
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/scrollbar/scrollbar.scss';
+import '../RecomendTest/RecomendTest.css';
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 
 export default function RecomendTest() {
@@ -13,7 +22,6 @@ export default function RecomendTest() {
   const [error, setError] = useState('');
   const [answers, setAnswers] = useState([]);
   const radiosWrapper = useRef();
-  const history = useHistory()
 
   const changeHandler = (e) => {
     setSelected(e.target.value);
@@ -63,23 +71,59 @@ export default function RecomendTest() {
     
   };
 
+  // function checked () {
+  //   const meth = answers.every(e => answs.includes(e));
+  //   console.log(meth);
+  //   return meth;
+  // }
 
-  console.log(answers);
+
+
+
  
     return (
-      <div className='test'>
+      <div >
         {answers}
         {
-          data.quests[activeQuestion].title === 'Чудово! Ви закінчили тест! Натисніть на кнопку щоб подивитися результати!'
+          data.quests[activeQuestion].title !== 'end'
           ?<div>  
-              <div className='center'>
-              <h2 className='t2'>{data.quests[activeQuestion].title}</h2>
-              <div className='happyy'></div>
-              <button id='signup' className='c next' onClick={history.push('/result-test')}>Подивитися результати</ button>
+              <div className='centerr'>
+              <h2 className='t2'>Чудово! Ви завершили тестування! Ми пропонуємо вам наступні результати!</h2>
+              <Swiper
+                  slidesPerView={1}
+                  spaceBetween={30}
+                  loop={true}
+                  pagination={{el: '.swiper-pagination',
+                  clickable: true}}
+                  navigation={{
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                  }}
+                  onSlideChange={() => console.log('slide change')}
+                  onSwiper={(swiper) => console.log(swiper)}
+                >
+
+                   {content.map((item, index) => (
+                    <SwiperSlide
+                      key={index}
+                      className="slider-content"
+                      style={{ background: `url('${item.image}') no-repeat center center`}}>
+                      <div className="inner">
+                        <h1 className='hh1'>{item.title}</h1>
+                        <p className='pp'>{item.description}</p>
+                        {item.link ? <a className='ll' href={item.link} target='_blank' rel="noreferrer"><button>ПЕРЕЙТИ</button></a> : null}
+                      </div>
+                      </SwiperSlide>
+                          ))}
+                        <div className="swiper-pagination"></div>
+                        <div className="swiper-button-next"></div>
+                        <div className="swiper-button-prev"></div>
+                        </Swiper>
+                        {/* <button onClick={checked}>click</button> */}
              </div>
              </div>
           :
-          <div>
+          <div className='test'>
         <h1 className='title'>Скоріше пройдіть тест та отримайте рекомендацію.</h1>
         <div className='cardd'>
         <h2 className='t2'>{data.quests[activeQuestion].title}</h2>

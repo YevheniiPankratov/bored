@@ -24,7 +24,7 @@ export default function App() {
                     <Route path='/signup' component={Signup}/>
                     <Route path='/login' component={Login}/>
                     <Route path='/forgot-pass' component={ForgotPass}/>
-                    <PrivateRoute path='/result-test' component={ResultTest}/>
+                    <PrivateRoute path='/rt' component={ResultTest}/>
                     <PrivateRoute path='/recomend-test' component={RecomendTest}/>
                     <PrivateRoute path='/update-profile' component={UpdateProfile}/>
                     <Redirect to="/"/>

@@ -3,7 +3,6 @@ import { Link} from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import './PreView.css'
 
-
 export default function PreView() {
     const {currentUser} = useAuth()
     
@@ -40,6 +39,7 @@ function Loged() {
             <h1 style={{textAlign: 'center'}}>Пройдіть тест та отримайте наші рекомендації для планування дозвілля. Гарного вам настрою! =)</h1>
             <Link id='signup' className='c cc' to='/recomend-test'>РОЗПОЧАТИ</Link>
             <div className='happy'></div>
+
         </div>
     )
 }
