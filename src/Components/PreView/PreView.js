@@ -1,10 +1,13 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
 import { Link} from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import './PreView.css'
 
 export default function PreView() {
     const {currentUser} = useAuth()
+    const { latitude, longitude, error } = usePosition();
+    console.log(latitude, longitude, error);
     
     return (
             <div className='preview'>
@@ -44,3 +47,23 @@ function Loged() {
     )
 }
 
+export const usePosition = () => {
+  const [position, setPosition] = useState({});
+  const [error, setError] = useState(null);
+  const onChange = ({latitude, longitude}) => {
+    setPosition({latitude, longitude});
+  };
+  const onError = (error) => {
+    setError(error.message);
+  };
+  useEffect(() => {
+    const geo = navigator.geolocation;
+    if (!geo) {
+      setError('Геолокация не поддерживается браузером');
+      return;
+    }
+    const watcher = geo.watchPosition(onChange, onError);
+    return () => geo.clearWatch(watcher);
+  }, []);
+  return {...position, error};
+}

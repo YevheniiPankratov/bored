@@ -15,7 +15,7 @@ export default function Footer() {
                 <li> <a target='_blank' rel="noreferrer" href="https://bowling-magnit.com/">Боулінг-клуб Магніт</a></li>
             </ul>
             </div>
-            <h5 className='law'>© Назва, 2021 р. Усі права захищено.</h5>
+            <h5 className='law'>© Панкратов, Планування дозвілля, 2021 р. Усі права захищено.</h5>
         </footer>
     )
 }

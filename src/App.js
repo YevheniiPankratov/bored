@@ -9,8 +9,8 @@ import PreView from './Components/PreView/PreView'
 import PrivateRoute from './Components/auth/PrivateRoute';
 import ForgotPass from './Components/auth/ForgotPass';
 import UpdateProfile from './Components/UpdateProfile/UpdateProfile';
-import ResultTest from './Test/ResultTest/ResultTest';
 import RecomendTest from './Test/RecomendTest/RecomendTest';
+
 
 export default function App() {
     return (
@@ -24,7 +24,6 @@ export default function App() {
                     <Route path='/signup' component={Signup}/>
                     <Route path='/login' component={Login}/>
                     <Route path='/forgot-pass' component={ForgotPass}/>
-                    <PrivateRoute path='/rt' component={ResultTest}/>
                     <PrivateRoute path='/recomend-test' component={RecomendTest}/>
                     <PrivateRoute path='/update-profile' component={UpdateProfile}/>
                     <Redirect to="/"/>

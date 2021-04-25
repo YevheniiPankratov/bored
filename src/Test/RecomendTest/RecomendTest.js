@@ -71,21 +71,10 @@ export default function RecomendTest() {
     
   };
 
-  // function checked () {
-  //   const meth = answers.every(e => answs.includes(e));
-  //   console.log(meth);
-  //   return meth;
-  // }
-
-
-
-
- 
     return (
       <div >
-        {answers}
         {
-          data.quests[activeQuestion].title !== 'end'
+          data.quests[activeQuestion].title === 'end'
           ?<div>  
               <div className='centerr'>
               <h2 className='t2'>Чудово! Ви завершили тестування! Ми пропонуємо вам наступні результати!</h2>
@@ -99,15 +88,13 @@ export default function RecomendTest() {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                   }}
-                  onSlideChange={() => console.log('slide change')}
-                  onSwiper={(swiper) => console.log(swiper)}
-                >
+                  >
 
-                   {content.map((item, index) => (
+                   {content.filter(i => answers.every(j => i.answs.includes(j))).map((item, index) => (
                     <SwiperSlide
                       key={index}
                       className="slider-content"
-                      style={{ background: `url('${item.image}') no-repeat center center`}}>
+                      style={{ background: `url('${item.image}') center/cover no-repeat`}}>
                       <div className="inner">
                         <h1 className='hh1'>{item.title}</h1>
                         <p className='pp'>{item.description}</p>
@@ -119,7 +106,7 @@ export default function RecomendTest() {
                         <div className="swiper-button-next"></div>
                         <div className="swiper-button-prev"></div>
                         </Swiper>
-                        {/* <button onClick={checked}>click</button> */}
+                        
              </div>
              </div>
           :

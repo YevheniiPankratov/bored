@@ -23,7 +23,7 @@ export default function Header() {
     return (
         <header>
              <nav>
-             <Link className='c' to='/'>Назва</Link>
+             <Link className='b' to='/'>Планування дозвілля</Link>
                 
                 <div className='links'>
                 {!currentUser
