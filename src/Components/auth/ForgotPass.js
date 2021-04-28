@@ -34,7 +34,7 @@ export default function ForgotPass() {
     return (
         <div>
         <div className='sign'>
-        <div className='card'>
+        <div className=''>
             <div className='card-body'>
                 <h2 className='title'>Cкинути пароль</h2>
                 <form onSubmit={handleSubmit}>

@@ -30,7 +30,7 @@ export default function Login() {
     return (
         <div>
         <div className='sign'>
-        <div className='card'>
+        <div className=''>
             <div className='card-body'>
                 <h2 className='title'>Вхід</h2>
                 <form onSubmit={handleSubmit}>

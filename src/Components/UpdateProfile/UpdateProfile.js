@@ -45,7 +45,7 @@ export default function UpdateProfile() {
 
     return (
         <div className='sign'>
-            <div className='card'>
+            <div className=''>
                 <div className='card-body'>
                     <h2 className='title'>Обновлення профілю</h2>
                     <form onSubmit={handleSubmit}>
