@@ -4,16 +4,14 @@ import {content, data} from '../../data/data';
 import { useRef } from 'react';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
+import {useEnv} from '../../contexts/EnvironmentContext';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import '../RecomendTest/RecomendTest.css';
-// install Swiper modules
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 export default function RecomendTest() {
   
@@ -22,6 +20,10 @@ export default function RecomendTest() {
   const [error, setError] = useState('');
   const [answers, setAnswers] = useState([]);
   const radiosWrapper = useRef();
+  const environmentProfile = useEnv()
+  
+  const all = answers.concat(environmentProfile);
+  
 
   const changeHandler = (e) => {
     setSelected(e.target.value);
@@ -38,6 +40,8 @@ export default function RecomendTest() {
 
     setAnswers([...answers, selected]);
         console.log(answers);
+        console.log(all);
+        console.log(environmentProfile);
         setSelected('');
 
     switch (selected) {
@@ -136,3 +140,4 @@ export default function RecomendTest() {
         </div>
     )
 }
+

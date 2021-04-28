@@ -43,7 +43,6 @@ export function AuthProvider({children}) {
         return unsubscribe
     }, [])
     
-
     const value = {
         currentUser,
         signup,
@@ -51,7 +50,7 @@ export function AuthProvider({children}) {
         logout,
         resetPassword,
         updateEmail,
-        updatePassword
+        updatePassword,
     }
 
     return (
