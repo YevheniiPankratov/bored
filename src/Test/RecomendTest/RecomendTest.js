@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './RecomendTest.css'
 import {content, data} from '../../data/data';
 import { useRef } from 'react';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import {useEnv} from '../../contexts/EnvironmentContext';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
@@ -11,26 +9,26 @@ import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import '../RecomendTest/RecomendTest.css';
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
-
 export default function RecomendTest() {
   
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [selected, setSelected] = useState('');
   const [error, setError] = useState('');
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState();
   const radiosWrapper = useRef();
   const environmentProfile = useEnv()
-  
-  const all = answers.concat(environmentProfile);
-  
 
+  
   const changeHandler = (e) => {
     setSelected(e.target.value);
     if(error) {
       setError('');
     }
   }
+
+  useEffect(() => {
+    setAnswers(environmentProfile)
+  }, [])
 
   const clickHandler = () => {
     const findCheckedInput = radiosWrapper.current.querySelector('input:checked');
@@ -39,9 +37,6 @@ export default function RecomendTest() {
     }
 
     setAnswers([...answers, selected]);
-        console.log(answers);
-        console.log(all);
-        console.log(environmentProfile);
         setSelected('');
 
     switch (selected) {
@@ -79,38 +74,21 @@ export default function RecomendTest() {
       <div >
         {
           data.quests[activeQuestion].title === 'end'
-          ?<div>  
+          ? 
+          <div>  
               <div className='centerr'>
               <h2 className='t2'>Чудово! Ви завершили тестування! Ми пропонуємо вам наступні результати!</h2>
-              <Swiper
-                  slidesPerView={1}
-                  spaceBetween={30}
-                  loop={true}
-                  pagination={{el: '.swiper-pagination',
-                  clickable: true}}
-                  navigation={{
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                  }}
-                  >
-
-                   {content.filter(i => answers.every(j => i.answs.includes(j))).map((item, index) => (
-                    <SwiperSlide
-                      key={index}
-                      className="slider-content"
-                      style={{ background: `url('${item.image}') center/cover no-repeat`}}>
-                      <div className="inner">
-                        <h1 className='hh1'>{item.title}</h1>
-                        <p className='pp'>{item.description}</p>
-                        {item.link ? <a className='ll' href={item.link} target='_blank' rel="noreferrer"><button>ПЕРЕЙТИ</button></a> : null}
-                      </div>
-                      </SwiperSlide>
-                          ))}
-                        <div className="swiper-pagination"></div>
-                        <div className="swiper-button-next"></div>
-                        <div className="swiper-button-prev"></div>
-                        </Swiper>
-                        
+                        <div className='cont'>
+                        {content.filter(i => answers.every(j => i.answs.includes(j))).map((item, index) => (
+                        <div className="card" key={index}>
+                            <img src={item.image} alt="img" className='imgg'/>
+                            <div className="container">
+                              <h4><b>{item.title}</b></h4> 
+                              <p className='text'>{item.description}</p>
+                              {item.link ? <a className='lkbtn' href={item.link} target='_blank' rel="noreferrer">ПЕРЕЙТИ</a> : null}
+                            </div>
+                          </div>))}
+                </div>
              </div>
              </div>
           :

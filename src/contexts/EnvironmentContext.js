@@ -22,8 +22,10 @@ export function EnvironmentContext({children}) {
           navigator.geolocation.getCurrentPosition(position => {
     
             let pos = {
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude
+              // latitude: position.coords.latitude,
+              // longitude: position.coords.longitude
+              latitude: 49.98,
+              longitude: 36.23
             }
     
             setUserPosition(pos)
