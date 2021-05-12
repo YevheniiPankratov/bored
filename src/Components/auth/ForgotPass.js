@@ -38,13 +38,13 @@ export default function ForgotPass() {
             <div className='card-body'>
                 <h2 className='title'>Cкинути пароль</h2>
                 <form onSubmit={handleSubmit}>
-                {message && <div className='.err'>{message}</div>}
+                
                  
                     <div className='sec' id='email'>
                             <label> Email </label>
                             <input type='email' ref={emailRef} required/>
                     </div>
-                    
+                    {message && <div className='.err' style={{textAlign: 'center'}}>{message}</div>}
                     {error && <div className='err'>{error}</div>}
                     <button disabled={loading} id='btn' type='submit'>СКИНУТИ</button>
                     <div className='have'><Link to='/login' className='lk'>Вхід</Link></div>

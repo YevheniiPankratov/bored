@@ -24,7 +24,7 @@ code {
 
 body, html, .App, #root, .home {
   width: 1440px;
-  min-height: 90vh;
+  min-height: 75vh;
   /* max-height: 145vh; */
 }
 

@@ -11,10 +11,8 @@ import ForgotPass from './Components/auth/ForgotPass';
 import UpdateProfile from './Components/UpdateProfile/UpdateProfile';
 import RecomendTest from './Test/RecomendTest/RecomendTest';
 import {EnvironmentContext} from './contexts/EnvironmentContext'
-
 export default function App() {
-    return (
-        <div>
+    return ( <div>
         <Router>
             <AuthProvider>
                 <EnvironmentContext>
@@ -34,6 +32,4 @@ export default function App() {
             </AuthProvider> 
         </Router>
         <Footer/>
-        </div>
-    )
-}
+</div>)}

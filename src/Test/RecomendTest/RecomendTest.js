@@ -3,10 +3,6 @@ import './RecomendTest.css'
 import {content, data} from '../../data/data';
 import { useRef } from 'react';
 import {useEnv} from '../../contexts/EnvironmentContext';
-import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
-import 'swiper/components/pagination/pagination.scss';
-import 'swiper/components/scrollbar/scrollbar.scss';
 import '../RecomendTest/RecomendTest.css';
 
 export default function RecomendTest() {
@@ -18,7 +14,6 @@ export default function RecomendTest() {
   const radiosWrapper = useRef();
   const environmentProfile = useEnv()
 
-  
   const changeHandler = (e) => {
     setSelected(e.target.value);
     if(error) {
@@ -88,31 +83,31 @@ export default function RecomendTest() {
                               {item.link ? <a className='lkbtn' href={item.link} target='_blank' rel="noreferrer">ПЕРЕЙТИ</a> : null}
                             </div>
                           </div>))}
+                        </div>
                 </div>
-             </div>
              </div>
           :
           <div className='test'>
-        <h1 className='title'>Скоріше пройдіть тест та отримайте рекомендацію.</h1>
-        <div className='cardd'>
-        <h2 className='t2'>{data.quests[activeQuestion].title}</h2>
-          <div className='cardd-body'>
-              <div className='control' ref={radiosWrapper}>
-                {
-                  data.quests[activeQuestion].choices.map((choice, i) => (
-                    <label className='radio' key={i}>
-                  <input className='marg' type='radio' name='answer' value={choice} onChange={changeHandler}/>
-                  <span>{choice}</span>
-                    </label>
-                  ))
-                }
+            <h1 className='title'>Скоріше пройдіть тест та отримайте рекомендацію.</h1>
+            <div className='cardd'>
+            <h2 className='t2'>{data.quests[activeQuestion].title}</h2>
+              <div className='cardd-body'>
+                  <div className='control' ref={radiosWrapper}>
+                    {
+                      data.quests[activeQuestion].choices.map((choice, i) => (
+                      <label className='radio' key={i}>
+                      <input className='marg' type='radio' name='answer' value={choice} onChange={changeHandler}/>
+                      <span>{choice}</span>
+                        </label>
+                      ))
+                    }
+                  </div>
+                </div>
+                {error && <div className="err">{error}</div>}
+                <div className='btn-next'>
+                <button id='signup' className='c next' onClick={clickHandler}>Наступне питання</button>
+                </div>
               </div>
-            </div>
-            {error && <div className="err">{error}</div>}
-            <div className='btn-next'>
-            <button id='signup' className='c next' onClick={clickHandler}>Наступне питання</button>
-            </div>
-          </div>
           </div>
         }
         </div>

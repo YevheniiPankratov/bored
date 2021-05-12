@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Axios from 'axios';
 
-
 const EnvContext = React.createContext();
 
 export function useEnv() {
